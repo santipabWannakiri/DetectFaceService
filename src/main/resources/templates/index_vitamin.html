@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	xmlns:mvc="http://www.springframework.org/schema/mvc">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>ThaiFood</title>
+
+<!-- Bootstrap -->
+<link th:href="@{css/bootstrap.css}" rel="stylesheet" media="screen" />
+<!-- custom -->
+<link th:href="@{css/custom.css}" rel="stylesheet" media="screen" />
+<link th:href="@{css/iconSocail.css}" rel="stylesheet" media="screen" />
+
+
+
+</head>
+
+<body>
+			 <div th:include="AdminMenu :: admin"></div>
+			 <div th:include="TabMenu :: tabmenu"></div>
+
+	<div class="banner-full">
+		<div class="container">
+			<div class="row">
+				<!-- <div class="bg-box"> -->
+				<div class="col-md-12"></div>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="margin-bottom-5px">
+			<div class="row">
+				<div class="col-md-6  ">
+					<div class="row bg-expert text-white">
+						<div class="col-md-6 no-padding">
+							<div class="user-pad">
+								<h3>Special Set $48.80!</h3>
+								<h4>Enjoy a sumptuous meal with a great price! Our All Day
+								</h4>
+								<button type="button"
+									class="btn btn-default-custom box1 button-pad">Read
+									more</button>
+							</div>
+						</div>
+						<div class="col-md-6 no-padding">
+							<div class="user-image">
+								<img src="ImageSystem/mini_logo.jpg"
+									class="img-responsive thumbnail">
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-1"></div>
+
+				<div class="col-md-6 ">
+					<div class="row bg-product text-white">
+						<div class="col-md-6 no-padding">
+							<div class="user-pad">
+								<h3>OUR STORY </h3>
+								<h4>Here at Central Thai we creates quality  comfort
+									halal home-style
+								</h4>
+								<button type="button"
+									class="btn btn-default-custom box2 button-pad">Read
+									more ></button>
+							</div>
+						</div>
+						<div class="col-md-6 no-padding">
+							<div class="user-image">
+								<img src="ImageSystem/mini_logo_2.jpg"
+									class="img-responsive thumbnail">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row ">
+			<div class="col-sm-2 ">
+				<div class="best-seller ">
+					<span>Best Seller</span>
+				</div>
+			</div>
+
+			<div class="col-sm-1"></div>
+
+			<div class="col-sm-2 "></div>
+		</div>
+
+		<div class="margin-bottom-25px">
+			<div class="row">
+				<div class="col-sm-3 col-lg-3 col-md-3 "
+					th:each="food : ${FoodList}">
+					<img th:src="*{food.PicCover}" width="200"
+						th:src="*{food.PicCover}" class="center-block" alt="">
+					<div class="caption">
+						<h4 class="text-center">
+							<a th:href="${'/product/show/' + food.id}" th:text="*{food.name}"></a>
+						</h4>
+						<h4 class="text-center" th:text="'$'+*{food.price}"></h4>
+						<p th:text="*{food.detail}"></p>
+					</div>
+					<div class="ratings">
+						<p class="pull-right">15 reviews</p>
+						<p>
+							<span class="glyphicon glyphicon-star"></span> <span
+								class="glyphicon glyphicon-star"></span> <span
+								class="glyphicon glyphicon-star"></span> <span
+								class="glyphicon glyphicon-star"></span> <span
+								class="glyphicon glyphicon-star"></span>
+						</p>
+					</div>
+<!-- 					<button type="button" class="btn btn-success">ADD TO CART</button> -->
+				</div>
+
+			</div>
+		</div>
+
+		<!--Trending Now -->
+		<!-- 		<div class="row "> -->
+		<!-- 			<div class="col-sm-2 "> -->
+		<!-- 				<div class="best-seller "> -->
+		<!-- 					<span>Trending Now</span> -->
+		<!-- 				</div> -->
+		<!-- 			</div> -->
+		<!-- 			<div class="col-sm-1"> -->
+		<!-- 				<div class="view-by"> -->
+		<!-- 					<span>view by </span> -->
+		<!-- 				</div> -->
+		<!-- 			</div> -->
+		<!-- 			<div class="col-sm-2 "> -->
+		<!-- 				<div class="form-group"> -->
+		<!-- 					<select id="pref-perpage" class="form-control"> -->
+		<!-- 						<option value="2">Category</option> -->
+		<!-- 						<option value="3">Category1</option> -->
+		<!-- 						<option value="4">Category2</option> -->
+		<!-- 						<option value="5">Category3</option> -->
+		<!-- 						<option selected="selected" value="2">Category</option> -->
+		<!-- 					</select> -->
+		<!-- 				</div> -->
+		<!-- 			</div> -->
+		<!-- 		</div> -->
+
+		<!-- 		<div class="margin-bottom-25px"> -->
+		<!-- 			<div class="row"> -->
+		<!-- 				<div class="col-sm-3 "> -->
+		<!-- 					<img src="http://www.images-iherb.com/m/CEN-27529-1.jpg" -->
+		<!-- 						class="center-block" alt=""> -->
+		<!-- 					<div class="caption"> -->
+		<!-- 						<h4 class="text-center"> -->
+		<!-- 							<a href="#">First Product</a> -->
+		<!-- 						</h4> -->
+		<!-- 						<h4 class="text-center">$24.99</h4> -->
+		<!-- 						<p> -->
+		<!-- 							See more snippets like this online store item at <a -->
+		<!-- 								target="_blank" href="http://www.bootsnipp.com">Bootsnipp - -->
+		<!-- 								http://bootsnipp.com</a>. -->
+		<!-- 						</p> -->
+		<!-- 					</div> -->
+		<!-- 					<div class="ratings"> -->
+		<!-- 						<p class="pull-right">15 reviews</p> -->
+		<!-- 						<p> -->
+		<!-- 							<span class="glyphicon glyphicon-star"></span> <span -->
+		<!-- 								class="glyphicon glyphicon-star"></span> <span -->
+		<!-- 								class="glyphicon glyphicon-star"></span> <span -->
+		<!-- 								class="glyphicon glyphicon-star"></span> <span -->
+		<!-- 								class="glyphicon glyphicon-star"></span> -->
+		<!-- 						</p> -->
+		<!-- 					</div> -->
+		<!-- 					<button type="button" class="btn btn-success">ADD TO CART</button> -->
+		<!-- 				</div> -->
+
+		<!-- 				<div class="col-sm-3 "> -->
+		<!-- 					<img src="http://www.images-iherb.com/m/DRB-00183-11.jpg" -->
+		<!-- 						class="center-block" alt=""> -->
+		<!-- 					<div class="caption"> -->
+		<!-- 						<h4 class="text-center"> -->
+		<!-- 							<a href="#">First Product</a> -->
+		<!-- 						</h4> -->
+		<!-- 						<h4 class="text-center">$24.99</h4> -->
+		<!-- 						<p> -->
+		<!-- 							See more snippets like this online store item at <a -->
+		<!-- 								target="_blank" href="http://www.bootsnipp.com">Bootsnipp - -->
+		<!-- 								http://bootsnipp.com</a>. -->
+		<!-- 						</p> -->
+		<!-- 					</div> -->
+		<!-- 					<div class="ratings"> -->
+		<!-- 						<p class="pull-right">15 reviews</p> -->
+		<!-- 						<p> -->
+		<!-- 							<span class="glyphicon glyphicon-star"></span> <span -->
+		<!-- 								class="glyphicon glyphicon-star"></span> <span -->
+		<!-- 								class="glyphicon glyphicon-star"></span> <span -->
+		<!-- 								class="glyphicon glyphicon-star"></span> <span -->
+		<!-- 								class="glyphicon glyphicon-star"></span> -->
+		<!-- 						</p> -->
+		<!-- 					</div> -->
+		<!-- 					<button type="button" class="btn btn-success">ADD TO CART</button> -->
+		<!-- 				</div> -->
+
+		<!-- 				<div class="col-sm-3 "> -->
+		<!-- 					<img src="http://www.images-iherb.com/m/NTL-04837-6.jpg" -->
+		<!-- 						class="center-block" alt=""> -->
+		<!-- 					<div class="caption"> -->
+		<!-- 						<h4 class="text-center"> -->
+		<!-- 							<a href="#">First Product</a> -->
+		<!-- 						</h4> -->
+		<!-- 						<h4 class="text-center">$24.99</h4> -->
+		<!-- 						<p> -->
+		<!-- 							See more snippets like this online store item at <a -->
+		<!-- 								target="_blank" href="http://www.bootsnipp.com">Bootsnipp - -->
+		<!-- 								http://bootsnipp.com</a>. -->
+		<!-- 						</p> -->
+		<!-- 					</div> -->
+		<!-- 					<div class="ratings"> -->
+		<!-- 						<p class="pull-right">15 reviews</p> -->
+		<!-- 						<p> -->
+		<!-- 							<span class="glyphicon glyphicon-star"></span> <span -->
+		<!-- 								class="glyphicon glyphicon-star"></span> <span -->
+		<!-- 								class="glyphicon glyphicon-star"></span> <span -->
+		<!-- 								class="glyphicon glyphicon-star"></span> <span -->
+		<!-- 								class="glyphicon glyphicon-star"></span> -->
+		<!-- 						</p> -->
+		<!-- 					</div> -->
+		<!-- 					<button type="button" class="btn btn-success">ADD TO CART</button> -->
+		<!-- 				</div> -->
+
+		<!-- 				<div class="col-sm-3 "> -->
+		<!-- 					<img src="http://www.images-iherb.com/m/CGN-00931-1.jpg" -->
+		<!-- 						class="center-block" alt=""> -->
+		<!-- 					<div class="caption"> -->
+		<!-- 						<h4 class="text-center"> -->
+		<!-- 							<a href="#">First Product</a> -->
+		<!-- 						</h4> -->
+		<!-- 						<h4 class="text-center">$24.99</h4> -->
+		<!-- 						<p> -->
+		<!-- 							See more snippets like this online store item at <a -->
+		<!-- 								target="_blank" href="http://www.bootsnipp.com">Bootsnipp - -->
+		<!-- 								http://bootsnipp.com</a>. -->
+		<!-- 						</p> -->
+		<!-- 					</div> -->
+		<!-- 					<div class="ratings"> -->
+		<!-- 						<p class="pull-right">15 reviews</p> -->
+		<!-- 						<p> -->
+		<!-- 							<span class="glyphicon glyphicon-star"></span> <span -->
+		<!-- 								class="glyphicon glyphicon-star"></span> <span -->
+		<!-- 								class="glyphicon glyphicon-star"></span> <span -->
+		<!-- 								class="glyphicon glyphicon-star"></span> <span -->
+		<!-- 								class="glyphicon glyphicon-star"></span> -->
+		<!-- 						</p> -->
+		<!-- 					</div> -->
+		<!-- 					<button type="button" class="btn btn-success">ADD TO CART</button> -->
+		<!-- 				</div> -->
+		<!-- 			</div> -->
+		<!-- 		</div> -->
+
+		<!--Featured -->
+		<!-- 		<div class="row "> -->
+		<!-- 			<div class="col-sm-2 "> -->
+		<!-- 				<div class="best-seller "> -->
+		<!-- 					<span>Featured</span> -->
+		<!-- 				</div> -->
+		<!-- 			</div> -->
+		<!-- 		</div> -->
+
+		<!-- 		<div class="margin-bottom-5px"> -->
+		<!-- 			<div class="row"> -->
+		<!-- 				<div class="col-sm-6 "> -->
+		<!-- 					<img src="http://www.images-iherb.com/m/CEN-27529-1.jpg" -->
+		<!-- 						class="center-block" alt=""> -->
+		<!-- 					<div class="caption"> -->
+		<!-- 						<h4 class="text-center"> -->
+		<!-- 							<a href="#">First Product</a> -->
+		<!-- 						</h4> -->
+		<!-- 						<h4 class="text-center">$24.99</h4> -->
+		<!-- 						<p> -->
+		<!-- 							See more snippets like this online store item at <a -->
+		<!-- 								target="_blank" href="http://www.bootsnipp.com">Bootsnipp - -->
+		<!-- 								http://bootsnipp.com</a>. -->
+		<!-- 						</p> -->
+		<!-- 					</div> -->
+		<!-- 					<div class="ratings"> -->
+		<!-- 						<p class="pull-right">15 reviews</p> -->
+		<!-- 						<p> -->
+		<!-- 							<span class="glyphicon glyphicon-star"></span> <span -->
+		<!-- 								class="glyphicon glyphicon-star"></span> <span -->
+		<!-- 								class="glyphicon glyphicon-star"></span> <span -->
+		<!-- 								class="glyphicon glyphicon-star"></span> <span -->
+		<!-- 								class="glyphicon glyphicon-star"></span> -->
+		<!-- 						</p> -->
+		<!-- 					</div> -->
+		<!-- 					<button type="button" class="btn btn-success">ADD TO CART</button> -->
+		<!-- 				</div> -->
+
+		<!-- 				<div class="col-sm-6 "> -->
+		<!-- 					<img src="http://www.images-iherb.com/m/DRB-00183-11.jpg" -->
+		<!-- 						class="center-block" alt=""> -->
+		<!-- 					<div class="caption"> -->
+		<!-- 						<h4 class="text-center"> -->
+		<!-- 							<a href="#">First Product</a> -->
+		<!-- 						</h4> -->
+		<!-- 						<h4 class="text-center">$24.99</h4> -->
+		<!-- 						<p> -->
+		<!-- 							See more snippets like this online store item at <a -->
+		<!-- 								target="_blank" href="http://www.bootsnipp.com">Bootsnipp - -->
+		<!-- 								http://bootsnipp.com</a>. -->
+		<!-- 						</p> -->
+		<!-- 					</div> -->
+		<!-- 					<div class="ratings"> -->
+		<!-- 						<p class="pull-right">15 reviews</p> -->
+		<!-- 						<p> -->
+		<!-- 							<span class="glyphicon glyphicon-star"></span> <span -->
+		<!-- 								class="glyphicon glyphicon-star"></span> <span -->
+		<!-- 								class="glyphicon glyphicon-star"></span> <span -->
+		<!-- 								class="glyphicon glyphicon-star"></span> <span -->
+		<!-- 								class="glyphicon glyphicon-star"></span> -->
+		<!-- 						</p> -->
+		<!-- 					</div> -->
+		<!-- 					<button type="button" class="btn btn-success">ADD TO CART</button> -->
+		<!-- 				</div> -->
+		<!-- 			</div> -->
+		<!-- 		</div> -->
+		<!--container -->
+	</div>
+
+
+	 <div th:include="Footer :: footer"></div>
+
+	<script src="js/jquery-3.1.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+
+
+</body>
+
+</html>
